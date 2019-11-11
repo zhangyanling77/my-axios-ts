@@ -1,4 +1,4 @@
-export class Axios {
+export default class Axios {
   request() {
     
   }
