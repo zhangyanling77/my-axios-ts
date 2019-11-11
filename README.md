@@ -14,3 +14,10 @@ yarn add axios @types/axios qs @types/qs parse-headers
 yarn add express body-parser
 
 ```
+
+# 启动项目
+1、启动后台
+```bash
+nodemon api.js
+```
+* 打开http://localhost:8080/get?name=zhangsan&age=10
