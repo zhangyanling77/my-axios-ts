@@ -1,4 +1,5 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+// import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from './axios';
 
 const baseURL = 'http://localhost:8080';
 // 服务器返回的对象
@@ -16,7 +17,7 @@ let user:User = {
 */
 axios({
   method: 'get', // 方法名
-  url: baseURL, // 访问路径
+  url: baseURL + '/get', // 访问路径
   params: user // 查询参数对象，它会转成查询字符串放在？后面
 }).then((response: AxiosResponse) => {
   console.log(response)
