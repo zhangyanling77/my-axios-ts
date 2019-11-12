@@ -21,3 +21,8 @@ yarn add express body-parser
 nodemon api.js
 ```
 * 打开http://localhost:8080
+
+2、启动前台
+```bash
+* yarn start
+```
