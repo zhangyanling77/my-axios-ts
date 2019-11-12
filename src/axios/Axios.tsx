@@ -10,7 +10,7 @@ export default class Axios {
   // 定义一个派发请求的方法
   dispatchRequest<T>(config: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return new Promise<AxiosResponse<T>>(function(resolve, reject){
-      let { method, url, params, headers, data } = config
+      let { method, url, params, headers, data, timeout } = config
       let request = new XMLHttpRequest();
       if(params && typeof params == 'object'){
         params = qs.stringify(params)
@@ -31,7 +31,7 @@ export default class Axios {
             resolve(response)
 
           } else {
-            reject('请求失败')
+            reject(`Error: Request faild with status code ${request.status}`)
           }
         }
       }
@@ -45,8 +45,15 @@ export default class Axios {
          // 转字符串
         body = JOSN.stringify(data)
       }
+      // 网络错误
       request.onerror = function(){
         reject('net::ERR_INTERNET_DISCONNECTED')
+      }
+      // 超时
+      if(timeout){
+        request.ontimeout = function(){
+          reject(`Error: timeout of ${timeout}ms exceeded`)
+        }
       }
       request.send(body)
     })
