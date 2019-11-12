@@ -45,7 +45,10 @@ export default class Axios {
          // 转字符串
         body = JOSN.stringify(data)
       }
-      request.send()
+      request.onerror = function(){
+        reject('net::ERR_INTERNET_DISCONNECTED')
+      }
+      request.send(body)
     })
   }
 }
