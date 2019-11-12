@@ -2,9 +2,11 @@
 export type Methods = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'delete' | 'DELETE' | 'options' | 'OPTIONS';
 
 export interface AxiosRequestConfig {
-  url: string;
-  method: Methods; 
-  params: any // 代表一个对象，属性是string，值是任何值
+  url?: string;
+  method?: Methods; 
+  params?: any; // 代表一个对象，属性是string，值是任何值
+  headers?: Record<string, any>;
+  data?:Record<string, any>;
 }
 
 // 这个接口用来修饰Axios.prototype.request方法
