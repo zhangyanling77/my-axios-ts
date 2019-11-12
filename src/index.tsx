@@ -20,7 +20,7 @@ console.time('cost')
 // 请求拦截器 zhangsan321
 axios.interceptors.request.use((config: AxiosRequestConfig):AxiosRequestConfig => {
   config.headers.name += '1'
-  console.timeEnd('cost');
+  console.timeEnd('cost'); 
   return config
 }, error => Promise.eject(error))
 let request2 = axios.interceptors.request.use((config: AxiosRequestConfig):AxiosRequestConfig => {
@@ -54,7 +54,7 @@ axios.interceptors.response.use((response: AxiosResponse):AxiosResponse => {
 axios.interceptors.response.eject(response1); // 删掉 zhangsan23
 
 // setTimeout(function(){
-  axios({
+  axios<User>({
     method: 'post', //'get', // 方法名
     url: baseURL +'/post', //'/post_status?code=400', //'/post_timeout?timeout=3000', //'/get', // 访问路径
     // params: user // 查询参数对象，它会转成查询字符串放在？后面 （是get请求可以传的参数）
@@ -67,7 +67,7 @@ axios.interceptors.response.eject(response1); // 删掉 zhangsan23
   }).then((response: AxiosResponse<User>) => {
     console.log(response)
     conosle.log(response.data)
-    // return response.data
+    return response.data
   })
   .catch((error: any) => {
     console.log(error)
