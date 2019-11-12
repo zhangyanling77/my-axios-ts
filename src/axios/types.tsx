@@ -7,6 +7,7 @@ export interface AxiosRequestConfig {
   params?: any; // 代表一个对象，属性是string，值是任何值
   headers?: Record<string, any>;
   data?:Record<string, any>;
+  timeout?: number;
 }
 
 // 这个接口用来修饰Axios.prototype.request方法
