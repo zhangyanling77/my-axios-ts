@@ -20,4 +20,4 @@ yarn add express body-parser
 ```bash
 nodemon api.js
 ```
-* 打开http://localhost:8080/get?name=zhangsan&age=10
+* 打开http://localhost:8080
