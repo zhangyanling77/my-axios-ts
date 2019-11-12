@@ -13,7 +13,7 @@ export interface AxiosRequestConfig {
 // 这个接口用来修饰Axios.prototype.request方法
 // Promise的T代表此promise变成成功态后resolve的值 => resolve(T)
 export interface AxiosInstance {
-  <T = any>(config: AxiosRequestConfig): Promise<T>
+  <T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>>;
 }
 
 // T代表响应体的类型
