@@ -14,6 +14,10 @@ export interface AxiosRequestConfig {
 // Promise的T代表此promise变成成功态后resolve的值 => resolve(T)
 export interface AxiosInstance {
   <T = any>(config: AxiosRequestConfig): Promise<AxiosResponse<T>>;
+  interceptors: {
+    request: AxiosInterceptorManager<AxiosRequestConfig>;
+    response: AxiosInterceptorManager<AxiosResponse>;
+  }
 }
 
 // T代表响应体的类型
