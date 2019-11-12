@@ -53,6 +53,7 @@ export default class Axios {
       }
       // 超时
       if(timeout){
+        request.timeout = timeout;
         request.ontimeout = function(){
           reject(`Error: timeout of ${timeout}ms exceeded`)
         }
