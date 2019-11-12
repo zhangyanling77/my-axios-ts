@@ -12,11 +12,13 @@ export default class Axios {
     return new Promise<AxiosResponse<T>>(function(resolve, reject){
       let { method, url, params, headers, data, timeout } = config
       let request = new XMLHttpRequest();
-      if(params && typeof params == 'object'){
+      // 序列化参数
+      if(params){
         params = qs.stringify(params)
+        url += ((url!.indexOf('?') == -1?'?':'&') + params)
       }
-      url += ((url!.indexOf('?') == -1?'?':'&') + params)
       request.open(method!, url!, true)
+      request.responseType = 'json';
       request.onreadystatechange = function(){
         if(request.readyState === 4){
           if(request.status >= 200 && request.status < 300){
