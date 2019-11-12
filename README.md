@@ -24,5 +24,5 @@ nodemon api.js
 
 2、启动前台
 ```bash
-* yarn start
+yarn start
 ```
