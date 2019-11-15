@@ -9,7 +9,9 @@ interface User {
 }
 
 let user:User = { name: 'zhangsan', password: '123456' }
-
+const cancelToken = axios.cancelToken
+const isCancel = axios.isCancel
+const source = cancelToken.source()
 /*
 * 先看一下怎么使用官方库
 * get
@@ -64,13 +66,19 @@ axios.interceptors.response.eject(response1); // 删掉 zhangsan23
     },
     timeout: 1000,
     data: user, // 查询参数，会转成查询字符串放在?的后面 （是post请求需要带的参数）
+    cancelToken: source.token,
   }).then((response: AxiosResponse<User>) => {
     console.log(response)
     conosle.log(response.data)
     return response.data
   })
   .catch((error: any) => {
-    console.log(error)
+    if(isCancel(error)){
+      console.log('isCancel取消请求', error)
+    } else {
+      console.log(error)
+    }
   })
 // }, 5000)
+source.cancel('用户取消了请求');
 
