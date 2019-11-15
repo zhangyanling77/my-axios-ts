@@ -1,3 +1,4 @@
+import AxiosInterceptorManager from './AxiosInterceptorManager';
 // 请求方法
 export type Methods = 'get' | 'GET' | 'post' | 'POST' | 'put' | 'PUT' | 'delete' | 'DELETE' | 'options' | 'OPTIONS';
 
@@ -8,6 +9,9 @@ export interface AxiosRequestConfig {
   headers?: Record<string, any>;
   data?:Record<string, any>;
   timeout?: number;
+  transformRequest?: (data: any, headers: any) => any;
+  transformResponse?: (data: any) => any;
+  cancelToken?: any
 }
 
 // 这个接口用来修饰Axios.prototype.request方法
@@ -18,6 +22,8 @@ export interface AxiosInstance {
     request: AxiosInterceptorManager<AxiosRequestConfig>;
     response: AxiosInterceptorManager<AxiosResponse>;
   }
+  cancelToken: any;
+  isCancel: any;
 }
 
 // T代表响应体的类型
