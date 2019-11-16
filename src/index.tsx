@@ -21,12 +21,12 @@ const source = cancelToken.source()
 console.time('cost')
 // 请求拦截器 zhangsan321
 axios.interceptors.request.use((config: AxiosRequestConfig):AxiosRequestConfig => {
-  config.headers.name += '1'
+  config.headers!.name += '1'
   console.timeEnd('cost'); 
   return config
-}, error => Promise.eject(error))
+}, error => Promise.reject(error))
 let request2 = axios.interceptors.request.use((config: AxiosRequestConfig):AxiosRequestConfig => {
-  config.headers.name += '2'
+  config.headers!.name += '2'
   return config
 })
 axios.interceptors.request.use((config: AxiosRequestConfig):AxiosRequestConfig | Promise<AxiosRequestConfig> => {
@@ -69,7 +69,7 @@ axios.interceptors.response.eject(response1); // 删掉 zhangsan23
     cancelToken: source.token,
   }).then((response: AxiosResponse<User>) => {
     console.log(response)
-    conosle.log(response.data)
+    console.log(response.data)
     return response.data
   })
   .catch((error: any) => {

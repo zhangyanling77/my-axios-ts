@@ -1,6 +1,6 @@
 interface OnFulfilled<V> {
     (value: V): V | PromiseLike<V> | undefined | null
-}//V | PromiseLike<V>) | undefined | null
+}
 interface OnRejected {
     (error: any): any
 }
